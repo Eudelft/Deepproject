@@ -23,7 +23,7 @@ from sklearn.preprocessing import StandardScaler
 def pre_process_encoder(df):
 
     'Features and label'
-    X = df.drop('Class',1)
+    X = df.drop('Class',axis=1)
     y = df.Class
    
     if "Car_Id" in X.columns:
