@@ -104,21 +104,6 @@ def label_y(y_value):
     Essentially, there a number of windows and we would like to associate each window to one specific class. (e.g. window[5] = class["A"] )
     Most of the time the windows will have the same class at each timestep, especially if there are very small window size of < 60 seconds. 
     However, there will be a small number of windows which will contain two classes and we then would like to select the most occuring class to train the window on.
-
-    Example - window[1]
-
-      TIME[s]   class_label
-    time 2145 |    "A"
-    time 2146 |    "A"
-    time 2147 |    "A"
-    time 2148 |    "A"
-    time    1 |    "B"
-    time    2 |    "B"
-    time    3 |    "B"
-
-    (to be honest I would drop any window with multiple classes since then there will be a bit of data leakage in the learning of each class which may be negligble.
-    Also, as shown in the example, these windows represent discontinuities in the data. The senquential order should not be maintained.
-    Note: it is also possible that the time resets even though there is the same class_label --> because one class/person may have done several trips starting from t=0)
     """
     y_samples_1 = []
     for i in range(len(y_value)):
